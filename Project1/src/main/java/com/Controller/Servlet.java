@@ -18,11 +18,8 @@ public class Servlet extends HttpServlet {
         
     }
 
-	private void syso() {
-		// TODO Auto-generated method stub
-
-	}
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+		System.out.println("Ola Thiago");
 		
 	}
 
