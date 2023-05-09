@@ -19,7 +19,7 @@ public class Servlet extends HttpServlet {
     }
 
 	protected void service(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		System.out.println("Ola Thiago");
+		System.out.println("Ola Thiago e Vinicius");
 		
 	}
 
