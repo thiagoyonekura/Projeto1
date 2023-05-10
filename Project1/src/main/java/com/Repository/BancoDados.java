@@ -61,4 +61,29 @@ public class BancoDados implements InterfaceBancoDados {
 		return listaProduto;
 	}
 
+	@Override
+	public void cadastrarProduto(Produto p) {
+		String create = "INSERT INTO `produto`(`id`, `codigo`, `nome`, `categoria`, `valor`, `quantidade`) VALUES (?,?,?,?,?,?)";
+
+		try {
+			Class.forName("com.mysql.cj.jdbc.Driver");
+			Connection c = DriverManager.getConnection(db_url, db_user, db_password);
+			System.out.println("Conectado ao BD");
+			PreparedStatement pst = c.prepareStatement(create);
+			pst.setLong(1, p.getId());
+			pst.setInt(2, p.getCodigo());
+			pst.setString(3, p.getNome());
+			pst.setString(4, p.getCategoria());
+			pst.setFloat(5, p.getValor());
+			pst.setInt(6, p.getQuantidade());
+			// executar a query
+			pst.executeUpdate();
+			// Encerrar conexão
+			c.close();
+		} catch (Exception e) {
+			System.out.println(e);
+		}
+		
+	}
+
 }
