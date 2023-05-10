@@ -35,7 +35,7 @@ public class BancoDados implements InterfaceBancoDados {
 	}
 
 	@Override
-	public List<Produto> consultarProdutos(String db_query) throws IOException {
+	public List<Produto> listarProdutos() throws IOException {
 
 		Produto product = new Produto();
 		List<Produto> listaProduto = new ArrayList<>();

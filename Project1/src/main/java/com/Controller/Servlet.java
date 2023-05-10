@@ -1,11 +1,15 @@
 package com.Controller;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import com.Models.*;
 
 import com.Repository.BancoDados;
 
@@ -54,7 +58,14 @@ public class Servlet extends HttpServlet {
             // Redireciona para a página de alteração
             response.sendRedirect("alterarProduto.html");
             
-        } else if (button.equals("home")) {
+        
+        } else if (button.equals("listar")) {
+            
+            // Redireciona para a página de alteração
+            response.sendRedirect("listarProdutos.jsp");
+            
+            
+        }else if (button.equals("home")) {
 			response.sendRedirect("index.html");
 		}
 
@@ -63,6 +74,7 @@ public class Servlet extends HttpServlet {
             // Redireciona para a página "homePage.html" novamente
             response.sendRedirect("index.html");
         }
+
     }
 
 }
