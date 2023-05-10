@@ -14,14 +14,6 @@ public class Produto {
 		
 	}
 	
-	public Produto(int id, int codigo, String nome, float valor, int quantidade) {
-		super();
-		this.id = id;
-		this.codigo = codigo;
-		this.nome = nome;
-		this.valor = valor;
-		this.quantidade = quantidade;
-	}
 
 	public Produto(int id, int codigo, String nome, String categoria, float valor, int quantidade) {
 		super();
