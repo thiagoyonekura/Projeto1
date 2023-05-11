@@ -18,7 +18,7 @@ import com.Repository.BancoDados;
 
 
 
-@WebServlet(urlPatterns = { "/homePage", "/cadastroProdutos", "/listaProdutos", "/modificarProdutos"})
+@WebServlet(urlPatterns = { "/inserir", "/home", "/cadastrar", "/inserir"})
 public class Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	BancoDados bd = new BancoDados("jdbc:mysql://localhost:3306/projeto1", "root", "");
@@ -35,9 +35,10 @@ public class Servlet extends HttpServlet {
 	}
 	
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        
-        // Redireciona para a página "homePage.html"
-        response.sendRedirect("homePage.html");
+		String path = request.getServletPath();
+		if (path.equals("/home")) {
+			response.sendRedirect("index.html");
+		}
     }
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -57,6 +58,12 @@ public class Servlet extends HttpServlet {
 			bd.cadastrarProduto(p);
 			request.setAttribute("listaPessoas", listarProdutos());
 			RequestDispatcher rd = request.getRequestDispatcher("produtos.jsp");
+			rd.forward(request, response);
+		}
+		
+		if (path.equals("/listar")) {
+			request.setAttribute("listaPessoas", listarProdutos());
+			RequestDispatcher rd = request.getRequestDispatcher("listarProdutos.jsp");
 			rd.forward(request, response);
 		}
 
