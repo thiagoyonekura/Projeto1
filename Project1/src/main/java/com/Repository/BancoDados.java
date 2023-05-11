@@ -38,7 +38,7 @@ public class BancoDados implements InterfaceBancoDados {
 	public List<Produto> consultarProdutos() throws IOException {
 
 		Produto product = new Produto();
-		List<Produto> listaProduto = new ArrayList<>();
+		List<Produto> listaProdutos = new ArrayList<>();
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection c = DriverManager.getConnection(db_url, db_user, db_password);
@@ -53,12 +53,13 @@ public class BancoDados implements InterfaceBancoDados {
 				product.setCategoria(resultSet.getString("categoria"));
 				product.setValor(resultSet.getString("valor"));
 				product.setQuantidade(resultSet.getString("quantidade"));
+				listaProdutos.add(product);
 				product = new Produto();
 			}
 		} catch (SQLException | ClassNotFoundException e) {
 			System.out.println("Falha ao conectar ao MySql" + e.getMessage());
 		}
-		return listaProduto;
+		return listaProdutos;
 	}
 
 	@Override

@@ -5,16 +5,16 @@
     
     <%
     	@ SuppressWarnings("unchecked")
-    	ArrayList<Produto> produto = (ArrayList<Produto>) request.getAttribute("listaPessoas");
+    	ArrayList<Produto> produto = (ArrayList<Produto>) request.getAttribute("listaProdutos");
     %>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="utf-8">
-<title>Listagem de Pessoas</title>
+<title>Listagem de Produtos</title>
 </head>
 <body>
-	<h1>Lista de Pessoas Cadastradas</h1>
+	<h1>Lista de Produtos Cadastrados</h1>
 	<table>
 		<thead>
 			<tr>
