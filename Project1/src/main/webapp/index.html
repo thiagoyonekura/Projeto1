@@ -6,12 +6,34 @@
 </head>
 <body>
 	<h1>Bem-vindo à Home Page</h1>
-	<p>Selecione uma das opções abaixo para continuar:</p>
-	<form method="post" action="HomeServlet">
-		<input type="submit" name="button" value="cadastrar"> 
-		<input type="submit" name="button" value="excluir">
-		<input type="submit" name="button" value="alterar">
-		<input type="submit" name="button" value="listar">
+	<h2>Selecione uma das opções abaixo para continuar:</h2>
+	<p>
+	<form method="post" action="adicionar" class="inline">
+		<input type="hidden" name="extra_submit_param"
+			value="extra_submit_value">
+		<button type="submit" name="submit_param" value="submit_value"
+			class="link-button">Cadastrar Produto</button>
+	</form>
+	<p>
+	<form method="post" action="listar" class="inline">
+		<input type="hidden" name="extra_submit_param"
+			value="extra_submit_value">
+		<button type="submit" name="submit_param" value="submit_value"
+			class="link-button">Listar Produtos</button>
+	</form>
+	<p>
+	<form method="post" action="alterar" class="inline">
+		<input type="hidden" name="extra_submit_param"
+			value="extra_submit_value">
+		<button type="submit" name="submit_param" value="submit_value"
+			class="link-button">Alterar Produto</button>
+	</form>
+	<p>
+	<form method="post" action="deletar" class="inline">
+		<input type="hidden" name="extra_submit_param"
+			value="extra_submit_value">
+		<button type="submit" name="submit_param" value="submit_value"
+			class="link-button">Deletar Produto</button>
 	</form>
 </body>
 </html>
