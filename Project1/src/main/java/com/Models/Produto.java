@@ -3,21 +3,16 @@ package com.Models;
 public class Produto {
 	
 	private int id;
-	private int codigo;
+	private String codigo;
 	private String nome;
 	private String categoria;
-	private float valor;
-	private int quantidade;
+	private String valor;
+	private String quantidade;
 	
-	
-	public Produto() {
-		
-	}
 	
 
-	public Produto(int id, int codigo, String nome, String categoria, float valor, int quantidade) {
+	public Produto(String codigo, String nome, String categoria, String valor, String quantidade) {
 		super();
-		this.id = id;
 		this.codigo = codigo;
 		this.nome = nome;
 		this.categoria = categoria;
@@ -25,19 +20,27 @@ public class Produto {
 		this.quantidade = quantidade;
 	}
 
+	
+
+	public Produto() {
+		
+	}
+
+
+
 	public int getId() {
-		return codigo;
+		return id;
 	}
 
 	public void setId(int id) {
 		this.id = id;
 	}
 
-	public int getCodigo() {
+	public String getCodigo() {
 		return codigo;
 	}
 
-	public void setCodigo(int codigo) {
+	public void setCodigo(String codigo) {
 		this.codigo = codigo;
 	}
 
@@ -57,19 +60,19 @@ public class Produto {
 		this.categoria = categoria;
 	}
 
-	public float getValor() {
+	public String getValor() {
 		return valor;
 	}
 
-	public void setValor(float valor) {
+	public void setValor(String valor) {
 		this.valor = valor;
 	}
 
-	public int getQuantidade() {
+	public String getQuantidade() {
 		return quantidade;
 	}
 
-	public void setQuantidade(int quantidade) {
+	public void setQuantidade(String quantidade) {
 		this.quantidade = quantidade;
 	}
 

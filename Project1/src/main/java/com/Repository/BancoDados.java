@@ -35,7 +35,7 @@ public class BancoDados implements InterfaceBancoDados {
 	}
 
 	@Override
-	public List<Produto> listarProdutos() throws IOException {
+	public List<Produto> consultarProdutos() throws IOException {
 
 		Produto product = new Produto();
 		List<Produto> listaProduto = new ArrayList<>();
@@ -48,11 +48,11 @@ public class BancoDados implements InterfaceBancoDados {
 
 			while (resultSet.next()) {
 				product.setId(resultSet.getInt("codigo"));
-				product.setCodigo(resultSet.getInt("codigo"));
+				product.setCodigo(resultSet.getString("codigo"));
 				product.setNome(resultSet.getString("nome"));
 				product.setCategoria(resultSet.getString("categoria"));
-				product.setValor(resultSet.getFloat("valor"));
-				product.setQuantidade(resultSet.getInt("quantidade"));
+				product.setValor(resultSet.getString("valor"));
+				product.setQuantidade(resultSet.getString("quantidade"));
 				product = new Produto();
 			}
 		} catch (SQLException | ClassNotFoundException e) {
@@ -63,19 +63,18 @@ public class BancoDados implements InterfaceBancoDados {
 
 	@Override
 	public void cadastrarProduto(Produto p) {
-		String create = "INSERT INTO `produto`(`id`, `codigo`, `nome`, `categoria`, `valor`, `quantidade`) VALUES (?,?,?,?,?,?)";
+		String create = "INSERT INTO `produto`(`codigo`, `nome`, `categoria`, `valor`, `quantidade`) VALUES (?,?,?,?,?)";
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection c = DriverManager.getConnection(db_url, db_user, db_password);
 			System.out.println("Conectado ao BD");
 			PreparedStatement pst = c.prepareStatement(create);
-			pst.setLong(1, p.getId());
-			pst.setInt(2, p.getCodigo());
+			pst.setString(2, p.getCodigo());
 			pst.setString(3, p.getNome());
 			pst.setString(4, p.getCategoria());
-			pst.setFloat(5, p.getValor());
-			pst.setInt(6, p.getQuantidade());
+			pst.setString(5, p.getValor());
+			pst.setString(6, p.getQuantidade());
 			// executar a query
 			pst.executeUpdate();
 			// Encerrar conexão
@@ -85,5 +84,6 @@ public class BancoDados implements InterfaceBancoDados {
 		}
 		
 	}
+
 
 }
