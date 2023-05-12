@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.Models.Produto;
+
 import com.Models.*;
 
 import com.Repository.BancoDados;
@@ -49,17 +50,17 @@ public class Servlet extends HttpServlet {
 		}
 
 		if (path.equals("/inserir")) {
-			String codigo = request.getParameter("codigo");
+			int codigo = Integer.parseInt(request.getParameter("codigo"));
 			String nome = request.getParameter("nome");
 			String categoria = request.getParameter("categoria");
-			String valor = request.getParameter("valor");
-			String quantidade = request.getParameter("quantidade");
+			float valor = Float.parseFloat(request.getParameter("valor"));
+			int quantidade = Integer.parseInt(request.getParameter("quantidade"));
 			Produto p = new Produto(codigo, nome, categoria, valor, quantidade);
 			bd.cadastrarProduto(p);
 			request.setAttribute("listaProdutos", listarProdutos());
 			RequestDispatcher rd = request.getRequestDispatcher("listarProdutos.jsp");
 			rd.forward(request, response);
-		}
+			}
 		
 		if (path.equals("/listar")) {
 			request.setAttribute("listaProdutos", listarProdutos());
@@ -68,23 +69,36 @@ public class Servlet extends HttpServlet {
 		}
 		
 		if (path.equals("/alterar")) {
-		    String codigo = request.getParameter("codigo");
-		    String nome = request.getParameter("nome");
-		    String categoria = request.getParameter("categoria");
-		    String valor = request.getParameter("valor");
-		    String quantidade = request.getParameter("quantidade");
-		    Produto p = new Produto(codigo, nome, categoria, valor, quantidade);
-		    bd.alterarProduto(p);
-		    request.setAttribute("listaProdutos", listarProdutos());
-		    RequestDispatcher rd = request.getRequestDispatcher("listarProdutos.jsp");
-		    rd.forward(request, response);
+			response.sendRedirect("alterar.html");
 		}
-
+		
+		if (path.equals("/update")) {
+			int codigo = Integer.parseInt(request.getParameter("codigo"));
+			String nome = request.getParameter("nome");
+			String categoria = request.getParameter("categoria");
+			float valor = Float.parseFloat(request.getParameter("valor"));
+			int quantidade = Integer.parseInt(request.getParameter("quantidade"));
+			Produto p = new Produto(codigo, nome, categoria, valor, quantidade);
+			bd.alterarProduto(p);
+			request.setAttribute("listaProdutos", listarProdutos());
+			RequestDispatcher rd = request.getRequestDispatcher("listarProdutos.jsp");
+			rd.forward(request, response);
+			}
+		
 		if (path.equals("/deletar")) {
-		    String codigo = request.getParameter("codigo");
-		    bd.deletarProduto(codigo);
+			response.sendRedirect("deletar.jsp");
+		}
+		
+		if (path.equals("/delete")) {
+			request.setAttribute("listaProdutos", listarProdutos());
+			String idParameter = request.getParameter("id");
+			if(idParameter != null && !idParameter.isEmpty()) {
+				int id = Integer.parseInt(idParameter);
+				bd.deletarProduto(id);
+			}
+		   
 		    request.setAttribute("listaProdutos", listarProdutos());
-		    RequestDispatcher rd = request.getRequestDispatcher("listarProdutos.jsp");
+		    RequestDispatcher rd = request.getRequestDispatcher("deletar.jsp");
 		    rd.forward(request, response);
 		}
 
@@ -95,5 +109,6 @@ public class Servlet extends HttpServlet {
 		listaProdutos = bd.consultarProdutos();
 		return listaProdutos;
 	}
+    
 
 }
