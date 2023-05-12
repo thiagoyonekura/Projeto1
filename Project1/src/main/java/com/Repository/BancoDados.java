@@ -57,34 +57,68 @@ public class BancoDados implements InterfaceBancoDados {
 				product = new Produto();
 			}
 		} catch (SQLException | ClassNotFoundException e) {
-			System.out.println("Falha ao conectar ao MySql" + e.getMessage());
+			e.printStackTrace();
 		}
 		return listaProdutos;
 	}
 
 	@Override
-	public void cadastrarProduto(Produto p) {
+	public void cadastrarProduto(Produto p) throws IOException{
 		String create = "INSERT INTO `produto`(`codigo`, `nome`, `categoria`, `valor`, `quantidade`) VALUES (?,?,?,?,?)";
 
 		try {
 			Class.forName("com.mysql.cj.jdbc.Driver");
 			Connection c = DriverManager.getConnection(db_url, db_user, db_password);
 			System.out.println("Conectado ao BD");
-			PreparedStatement pst = c.prepareStatement(create);
-			pst.setString(2, p.getCodigo());
-			pst.setString(3, p.getNome());
-			pst.setString(4, p.getCategoria());
-			pst.setString(5, p.getValor());
-			pst.setString(6, p.getQuantidade());
+			PreparedStatement ps = c.prepareStatement(create);
+			ps.setString(2, p.getCodigo());
+			ps.setString(3, p.getNome());
+			ps.setString(4, p.getCategoria());
+			ps.setString(5, p.getValor());
+			ps.setString(6, p.getQuantidade());
 			// executar a query
-			pst.executeUpdate();
+			ps.executeUpdate();
 			// Encerrar conexão
 			c.close();
-		} catch (Exception e) {
-			System.out.println(e);
+		} catch (SQLException | ClassNotFoundException e) {
+			e.printStackTrace();
 		}
 		
 	}
+	
+	@Override
+	public void alterarProduto(Produto p) throws IOException {
+	    String sql = "UPDATE produto SET nome=?, categoria=?, valor=?, quantidade=? WHERE codigo=?";
+	    try {
+	    		Class.forName("com.mysql.cj.jdbc.Driver");
+	    		Connection c = DriverManager.getConnection(db_url, db_user, db_password);
+	            PreparedStatement ps = c.prepareStatement(sql); 
+	    	ps.setString(5, p.getCodigo());
+	    	ps.setString(1, p.getNome());
+	    	ps.setString(2, p.getCategoria());
+	    	ps.setString(3, p.getValor());
+	    	ps.setString(4, p.getQuantidade());
+	        
+	    	ps.executeUpdate();
+	    } catch (SQLException | ClassNotFoundException e) {
+	        e.printStackTrace();
+	    }
+	}
 
+	
+	@Override
+	public void deletarProduto(String codigo) throws IOException {
+	    String sql = "DELETE FROM produto WHERE codigo=?";
+	    try {
+	        Class.forName("com.mysql.cj.jdbc.Driver");
+	        Connection c = DriverManager.getConnection(db_url, db_user, db_password);
+	        PreparedStatement ps = c.prepareStatement(sql); 
+	        ps.setString(1, codigo);
+	        ps.executeUpdate();
+	        c.close();
+	    } catch (SQLException | ClassNotFoundException e) {
+	        e.printStackTrace();
+	    }
+	}
 
 }

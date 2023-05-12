@@ -66,6 +66,27 @@ public class Servlet extends HttpServlet {
 			RequestDispatcher rd = request.getRequestDispatcher("listarProdutos.jsp");
 			rd.forward(request, response);
 		}
+		
+		if (path.equals("/alterar")) {
+		    String codigo = request.getParameter("codigo");
+		    String nome = request.getParameter("nome");
+		    String categoria = request.getParameter("categoria");
+		    String valor = request.getParameter("valor");
+		    String quantidade = request.getParameter("quantidade");
+		    Produto p = new Produto(codigo, nome, categoria, valor, quantidade);
+		    bd.alterarProduto(p);
+		    request.setAttribute("listaProdutos", listarProdutos());
+		    RequestDispatcher rd = request.getRequestDispatcher("listarProdutos.jsp");
+		    rd.forward(request, response);
+		}
+
+		if (path.equals("/deletar")) {
+		    String codigo = request.getParameter("codigo");
+		    bd.deletarProduto(codigo);
+		    request.setAttribute("listaProdutos", listarProdutos());
+		    RequestDispatcher rd = request.getRequestDispatcher("listarProdutos.jsp");
+		    rd.forward(request, response);
+		}
 
     }
     
