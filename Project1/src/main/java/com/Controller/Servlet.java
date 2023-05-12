@@ -57,7 +57,7 @@ public class Servlet extends HttpServlet {
 			Produto p = new Produto(codigo, nome, categoria, valor, quantidade);
 			bd.cadastrarProduto(p);
 			request.setAttribute("listaProdutos", listarProdutos());
-			RequestDispatcher rd = request.getRequestDispatcher("produtos.jsp");
+			RequestDispatcher rd = request.getRequestDispatcher("listarProdutos.jsp");
 			rd.forward(request, response);
 		}
 		
