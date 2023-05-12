@@ -47,7 +47,7 @@ public class BancoDados implements InterfaceBancoDados {
 			ResultSet resultSet = ps.executeQuery();
 
 			while (resultSet.next()) {
-				product.setId(resultSet.getInt("codigo"));
+				product.setId(resultSet.getInt("id"));
 				product.setCodigo(resultSet.getString("codigo"));
 				product.setNome(resultSet.getString("nome"));
 				product.setCategoria(resultSet.getString("categoria"));
