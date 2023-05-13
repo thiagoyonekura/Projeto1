@@ -5,15 +5,20 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color:black;
+  color:yellow;
+  font-size: 22px;
 }
 
 .link-button {
   margin: 10px;
   font-size: 50px;
   background-color: rgb(124, 240, 255);
+  border-radius:20px;
 }
 
 .link-button:hover {
   background-color: rgb(255, 128, 124);
   cursor: pointer;
+  border-radius:20px;
 }
