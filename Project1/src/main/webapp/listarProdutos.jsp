@@ -39,6 +39,6 @@
 		</tbody>
 	</table>
 	<p>
-	<a href="home">Sair</a>
+	<a href="home">Voltar ao Home</a>
 </body>
 </html>
