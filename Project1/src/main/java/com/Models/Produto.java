@@ -21,7 +21,11 @@ public class Produto {
 		this.quantidade = quantidade;
 	}
 
-	
+	public Produto(int id) {
+		super();
+		this.id = id;
+		
+	}
 
 	public Produto() {
 		

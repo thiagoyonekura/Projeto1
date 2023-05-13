@@ -19,7 +19,7 @@ import com.Repository.BancoDados;
 
 
 
-@WebServlet(urlPatterns = {"/home", "/cadastrar", "/inserir", "/listar", "/alterar", "/deletar"})
+@WebServlet(urlPatterns = {"/home", "/cadastrar", "/inserir", "/listar", "/alterar", "/deletar", "/delete"})
 public class Servlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	BancoDados bd = new BancoDados("jdbc:mysql://localhost:3306/projeto1", "root", "");
@@ -92,13 +92,10 @@ public class Servlet extends HttpServlet {
 		}
 		
 		if (path.equals("/delete")) {
-			request.setAttribute("listaProdutos", listarProdutos());
-			String idParameter = request.getParameter("id");
-			if(idParameter != null && !idParameter.isEmpty()) {
-				int id = Integer.parseInt(idParameter);
-				bd.deletarProduto(id);
-			}
-		   
+			int id = Integer.parseInt(request.getParameter("id"));
+			Produto p = new Produto(id);
+				bd.deletarProduto(p);
+			
 		    request.setAttribute("listaProdutos", listarProdutos());
 		    RequestDispatcher rd = request.getRequestDispatcher("listarProdutos.jsp");
 		    rd.forward(request, response);

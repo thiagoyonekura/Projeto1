@@ -104,13 +104,13 @@ public class BancoDados implements InterfaceBancoDados {
 
 	
 	@Override
-	public void deletarProduto(int id) throws IOException {
+	public void deletarProduto(Produto p) throws IOException {
 	    String sql = "DELETE FROM produto WHERE id =?";
 	    try {
 	        Class.forName("com.mysql.cj.jdbc.Driver");
 	        Connection c = DriverManager.getConnection(db_url, db_user, db_password);
 	        PreparedStatement ps = c.prepareStatement(sql); 
-	        ps.setInt(1, id);
+	        ps.setInt(1, p.getId());
 	        ps.executeUpdate();
 	        c.close();
 	    } catch (SQLException | ClassNotFoundException e) {

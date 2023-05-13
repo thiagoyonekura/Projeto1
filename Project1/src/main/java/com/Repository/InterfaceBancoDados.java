@@ -10,5 +10,5 @@ public interface InterfaceBancoDados {
 	public List<Produto> consultarProdutos() throws IOException;
 	public void cadastrarProduto(Produto p) throws IOException;
 	public void alterarProduto(Produto p) throws IOException;
-	public void deletarProduto(int codigo) throws IOException;
+	public void deletarProduto(Produto p) throws IOException;
 }

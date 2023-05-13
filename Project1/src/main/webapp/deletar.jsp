@@ -18,6 +18,7 @@
 	<table>
 		<thead>
     <tr>
+    	
         <th>codigo</th>
         <th>nome</th>
         <th>categoria</th>
@@ -30,6 +31,7 @@
 <tbody>
     <%for(int i=0; i<produto.size(); i++){ %>
         <tr>
+        	
             <td><%=produto.get(i).getCodigo() %></td>
             <td><%=produto.get(i).getNome() %></td>
             <td><%=produto.get(i).getCategoria() %></td>
