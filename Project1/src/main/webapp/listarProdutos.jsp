@@ -39,6 +39,25 @@
 		</tbody>
 	</table>
 	<p>
-	<a href="home">Voltar ao Home</a>
+	<form method="post" action="alterar" class="inline">
+		<input type="hidden" name="extra_submit_param"
+			value="extra_submit_value">
+		<button type="submit" name="submit_param" value="submit_value"
+			class="link-button">Alterar</button>
+	</form>
+	<p>
+	<form method="post" action="deletar" class="inline">
+		<input type="hidden" name="extra_submit_param"
+			value="extra_submit_value">
+		<button type="submit" name="submit_param" value="submit_value"
+			class="link-button">Deletar</button>
+	</form>
+	<p>
+	<form method="get" action="home" class="inline">
+		<input type="hidden" name="extra_submit_param"
+			value="extra_submit_value">
+		<button type="submit" name="submit_param" value="submit_value"
+			class="link-button">Voltar ao home</button>
+	</form>
 </body>
 </html>

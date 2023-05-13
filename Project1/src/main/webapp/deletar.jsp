@@ -49,6 +49,11 @@
 </tbody>
 	</table>
 	<p>
-	<a href="home">Voltar ao Home</a>
+	<form method="get" action="home" class="inline">
+		<input type="hidden" name="extra_submit_param"
+			value="extra_submit_value">
+		<button type="submit" name="submit_param" value="submit_value"
+			class="link-button">Voltar ao home</button>
+	</form>
 </body>
 </html>
