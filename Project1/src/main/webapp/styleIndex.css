@@ -21,4 +21,8 @@ body {
   background-color: rgb(255, 128, 124);
   cursor: pointer;
   border-radius:20px;
+  -moz-transform: scale(1.3);
+  -webkit-transform: scale(1.3);
+  transform: scale(1.3);
+
 }
