@@ -86,7 +86,9 @@ public class Servlet extends HttpServlet {
 			}
 		
 		if (path.equals("/deletar")) {
-			response.sendRedirect("deletar.jsp");
+			request.setAttribute("listaProdutos", listarProdutos());
+			RequestDispatcher rd = request.getRequestDispatcher("deletar.jsp");
+			rd.forward(request, response);
 		}
 		
 		if (path.equals("/delete")) {
@@ -98,7 +100,7 @@ public class Servlet extends HttpServlet {
 			}
 		   
 		    request.setAttribute("listaProdutos", listarProdutos());
-		    RequestDispatcher rd = request.getRequestDispatcher("deletar.jsp");
+		    RequestDispatcher rd = request.getRequestDispatcher("listarProdutos.jsp");
 		    rd.forward(request, response);
 		}
 

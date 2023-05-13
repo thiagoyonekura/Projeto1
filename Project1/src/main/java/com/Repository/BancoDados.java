@@ -40,7 +40,7 @@ public class BancoDados implements InterfaceBancoDados {
 		Produto product = new Produto();
 		List<Produto> listaProdutos = new ArrayList<>();
 		try {
-			Class.forName("com.mysql.cj.jdbc.Driver");
+			Class.forName("com.mysql.cj.jdbc.Driver"); //Classe que passa o caminho da conexão
 			Connection c = DriverManager.getConnection(db_url, db_user, db_password);
 			System.out.println("Conectado ao BD");
 			PreparedStatement ps = c.prepareStatement("SELECT * FROM produto");
@@ -69,7 +69,7 @@ public class BancoDados implements InterfaceBancoDados {
 	        Class.forName("com.mysql.cj.jdbc.Driver");
 	        Connection c = DriverManager.getConnection(db_url, db_user, db_password);
 	        System.out.println("Conectado ao BD");
-	        PreparedStatement ps = c.prepareStatement(create);
+	        PreparedStatement ps = c.prepareStatement(create); //PreparedStatement prepara a conexão
 	        ps.setInt(1, p.getCodigo());
 	        ps.setString(2, p.getNome());
 	        ps.setString(3, p.getCategoria());

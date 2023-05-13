@@ -1,43 +1,52 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+    pageEncoding="utf-8"%>
+    <%@page import="com.Models.Produto" %>
+    <%@page import="java.util.ArrayList" %>
+    
+    <%
+    	@ SuppressWarnings("unchecked")
+    	ArrayList<Produto> produto = (ArrayList<Produto>) request.getAttribute("listaProdutos");
+    %>
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Deletar Produto</title>
+<meta charset="utf-8">
+<title>Listagem de Produtos</title>
 </head>
 <body>
-	<h1>Deletar Produto</h1>
+	<h1>Lista de Produtos Cadastrados</h1>
 	<table>
 		<thead>
-			<tr>
-				<th>ID</th>
-				<th>Código</th>
-				<th>Nome</th>
-				<th>Categoria</th>
-				<th>Valor</th>
-				<th>Quantidade</th>
-				<th>Ação</th>
-			</tr>
-		</thead>
-		<tbody>
-			<c:forEach var="produto" items="${listaProdutos}">
-				<tr>
-					<td>${produto.id}</td>
-					<td>${produto.codigo}</td>
-					<td>${produto.nome}</td>
-					<td>${produto.categoria}</td>
-					<td>${produto.valor}</td>
-					<td>${produto.quantidade}</td>
-					<td>
-						<form method="post" action="delete">
-							<input type="hidden" name="id" value="${produto.id}">
-							<button type="submit">Deletar</button>
-						</form>
-					</td>
-				</tr>
-			</c:forEach>
-		</tbody>
+    <tr>
+        <th>codigo</th>
+        <th>nome</th>
+        <th>categoria</th>
+        <th>valor</th>
+        <th>quantidade</th>
+        <th>Ações</th> <!-- Nova coluna para o botão de exclusão -->
+    </tr>
+</thead>
+
+<tbody>
+    <%for(int i=0; i<produto.size(); i++){ %>
+        <tr>
+            <td><%=produto.get(i).getCodigo() %></td>
+            <td><%=produto.get(i).getNome() %></td>
+            <td><%=produto.get(i).getCategoria() %></td>
+            <td><%=produto.get(i).getValor() %></td>
+            <td><%=produto.get(i).getQuantidade() %></td>
+            <td>
+                <!-- Botão de exclusão -->
+                <form method="POST" action="delete">
+                    <input type="hidden" name="id" value="<%=produto.get(i).getId() %>">
+                    <input type="submit" value="Excluir">
+                </form>
+            </td>
+        </tr>
+    <%} %>
+</tbody>
 	</table>
+	<p>
+	<a href="home">Sair</a>
 </body>
-<a href="home">Voltar ao Home</a>
 </html>
