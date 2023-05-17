@@ -1,31 +1,47 @@
 <!DOCTYPE html>
 <html>
-<head lang="pt-br">
-<meta charset="utf-8">
-<title>Cadastro de Produto</title>
-</head>
-<body>
 
-	<form action="inserir" method="post">
-		<label for="codigolbl">Código do Produto:</label> 
-		<input type="text" name="codigo" required><br>
-		<label for="nomelbl">Nome do Produto:</label> 
-		<input type="text" name="nome" required><br>
-		<label for="categorialbl">Categoria do Produto:</label> 
-		<input type="text" name="categoria" required><br> 
-		<label for="valorlbl">Valor do Produto:</label> 
-		<input type="text" name="valor" required><br> 
-		<label for="quantidadelbl">Quantidade de Produtos:</label> 
-		<input type="text" name="quantidade" required><br>
-		<input type="submit"name="Cadastrar" value="submit">
-		<input type="reset">
-	</form>
-	<p>
-	<form method="get" action="home" class="inline">
-		<input type="hidden" name="extra_submit_param"
-			value="extra_submit_value">
-		<button type="submit" name="submit_param" value="submit_value"
-			class="link-button">Voltar ao home</button>
-	</form>
+<head lang="pt-br">
+	<meta charset="utf-8">
+	<title>Cadastro de Produto</title>
+	<link rel="stylesheet" type="text/css" href="styleCadastro.css">
+</head>
+
+<body class="cadastro-page">
+
+	<div class="coluna-cadastro">
+		<h1>Cadastrar produto</h1>
+
+
+		<form action="inserir" method="post">
+			<div class="textfield">
+				<label for="codigolbl">Código do Produto:</label>
+				<input type="text" name="codigo" required><br>
+				<label for="nomelbl">Nome do Produto:</label>
+				<input type="text" name="nome" required><br>
+				<label for="categorialbl">Categoria do Produto:</label>
+				<input type="text" name="categoria" required><br>
+				<label for="valorlbl">Valor do Produto:</label>
+				<input type="text" name="valor" required><br>
+				<label for="quantidadelbl">Quantidade de Produtos:</label>
+				<input type="text" name="quantidade" required><br>
+				<input type="submit" name="Cadastrar" value="submit" style="margin-bottom: 10px; cursor: pointer;">
+				<input type="reset" style="cursor: pointer;">
+				<p>
+				<form method="get" action="home" class="inline">
+					<input type="hidden" name="extra_submit_param" value="extra_submit_value">
+				</form>	
+			</div>			
+		</form>
+
+		<form method="get" action="home" class="inline">
+			<button type="submit" name="submit_param" value="submit_value" class="link-button">Voltar ao home</button>
+		</form>
+
+	</div>
+
+
+
 </body>
+
 </html>
