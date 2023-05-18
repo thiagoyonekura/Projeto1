@@ -37,6 +37,7 @@ body {
     letter-spacing: 4px;
     background: #00ff88;
     box-shadow: 0px 10px 40px -12px #00ff8052;
+    cursor: pointer;
 }
 
 .link-button:hover {
@@ -50,8 +51,13 @@ thead {
     color: #15a864;
 }
 
+.vermelho:hover {
+	background: red;
+	cursor: pointer;
+}
+
 .textfield {
-    width: 100%;
+   	width: 332px;
     border: none;
     border-radius: 10px;
     padding: 15px;
@@ -63,5 +69,5 @@ thead {
     outline: none;
     box-sizing: border-box;
     margin-bottom: 5px;
-    cursor: pointer;
+    
  }

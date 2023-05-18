@@ -12,10 +12,13 @@
 <head>
 <meta charset="utf-8">
 <title>Listagem de Produtos</title>
+<link rel="stylesheet" type="text/css" href="styleDeletar.css">
 </head>
-<body>
-	<h1>Lista de Produtos Cadastrados</h1>
+<body class="page">
 	<table>
+		<caption>
+				<h1 id="title">Lista de Produtos Cadastrados </h1>
+			</caption>
 		<thead>
     <tr>
     	
@@ -32,18 +35,19 @@
     <%for(int i=0; i<produto.size(); i++){ %>
         <tr>
         	
-            <td><%=produto.get(i).getCodigo() %></td>
-            <td><%=produto.get(i).getNome() %></td>
-            <td><%=produto.get(i).getCategoria() %></td>
-            <td><%=produto.get(i).getValor() %></td>
-            <td><%=produto.get(i).getQuantidade() %></td>
-            <td>
-                <!-- Botão de exclusão -->
-                <form method="POST" action="delete">
-                    <input type="hidden" name="id" value="<%=produto.get(i).getId() %>">
-                    <input type="submit" value="Excluir">
-                </form>
-            </td>
+                <td class="textfield"><%=produto.get(i).getCodigo() %></td>
+                <td class="textfield"><%=produto.get(i).getNome() %></td>
+                <td class="textfield"><%=produto.get(i).getCategoria() %></td>
+                <td class="textfield"><%=produto.get(i).getValor() %></td>
+                <td class="textfield"><%=produto.get(i).getQuantidade() %></td>
+                <td>
+                    <!-- Botão de exclusão -->
+                    <form method="POST" action="delete">
+                        <input type="hidden" name="id" value="<%=produto.get(i).getId() %>">
+                        <input class="textfield vermelho" type="submit" value="Excluir">
+                    </form>
+                </td>
+
         </tr>
     <%} %>
 </tbody>
