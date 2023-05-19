@@ -37,7 +37,7 @@ body {
 .link-button {
     width: 100%;
     padding: 16px 0px;
-    margin: 25px;
+    margin: 25px auto;
     border: none;
     border-radius: 8px;
     outline: none;
